@@ -10,7 +10,7 @@
     <div class="container justify-content-center">
         <div class="row justify-content-center">
             <div class="col-sm-6">
-                <div class="card shadow p-3 mb-5 bg-white rounded text-white" style="max-width:">
+                <div class="card shadow p-3 mb-5 bg-white rounded text-white" >
                     <div class="card-header bg-dark text-center">Sistema de ventas</div>
                     <div class="card-body bg-white text-dark"><img class="mx-auto d-block" src="img/Usco.png" height="170px">
                         <form>
