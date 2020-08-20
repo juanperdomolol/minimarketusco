@@ -1,3 +1,16 @@
+<?php
+
+require_once "clases/conexion.php";
+$obj = new conectar();
+$conexion = $obj->conexion();
+
+$sql = "SELECT * from usuarios where email= 'admin' ";
+$result = mysqli_query($conexion, $sql);
+$validar = 0;
+if (mysqli_num_rows($result) > 0)
+    $validar = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +39,10 @@
                                 <input type="text" class="form-control" name="password" id="password">
                             </div>
                             <button class="btn btn-primary" id="EntrarSistema">Entrar</button>
-                            <a href="registro.php" class="btn btn-danger">Registrarse</a>
+                            <?php
+                            if (!$validar) : ?>
+                                <a href="registro.php" class="btn btn-danger">Registrarse</a>
+                            <?php endif; ?>
                         </form>
                     </div>
                 </div>
@@ -43,7 +59,7 @@
         $('#EntrarSistema').click(function() {
 
             vacios = validarFormVacio('frmLogin');
-            if (vacios > 0){
+            if (vacios > 0) {
                 alert("Debes llenar todos los campos!!");
                 return false;
             }
@@ -53,9 +69,9 @@
                 data: datos,
                 url: "procesos/regLogin/login.php",
                 success: function(r) {
-                    if(r==1){
-                        window.location= "vistas/inicio.php";
-                    }else{
+                    if (r == 1) {
+                        window.location = "vistas/inicio.php";
+                    } else {
                         alert("No se pudo acceder :( ");
                     }
 
